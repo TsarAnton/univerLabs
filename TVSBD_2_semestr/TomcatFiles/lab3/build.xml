@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<project name="lab3" basedir=".">
+	<property name="tomcat-dir" value="D:\apache-tomcat-10.0.27"/>
+	<property name="tomcat-bin-dir" value="${tomcat-dir}/bin"/>
+	<property name="tomcat-host" value="localhost"/>
+	<property name="tomcat-port" value="8080"/>
+	<property name="tomcat-user" value="admin"/>
+	<property name="tomcat-password" value="admin"/>
+	<property name="tomcat-manager-url" value="http://${tomcat-host}:${tomcat-port}/manager/text"/>
+	<property name="deploy-path" value="/lab3"/>
+
+	<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask">
+		<classpath>
+			<fileset dir="${tomcat-dir}/lib">
+				<include name="catalina-ant.jar"/>
+				<include name="tomcat-coyote.jar"/>
+				<include name="tomcat-util.jar"/>
+			</fileset>
+			<fileset dir="${tomcat-bin-dir}">
+				<include name="tomcat-juli.jar"/>
+			</fileset>
+		</classpath>
+	</taskdef>
+	<target name="Update">
+		<reload
+			url="${tomcat-manager-url}"
+			username="${tomcat-user}"
+			password="${tomcat-password}"
+			path="${deploy-path}"/>
+	</target>
+</project>

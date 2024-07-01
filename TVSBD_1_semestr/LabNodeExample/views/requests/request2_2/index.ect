@@ -1,0 +1,14 @@
+<%extend '././page.ect' %>
+<table>
+    <tr>
+        <th>Дата начала</th>
+        <th>Дата завершения</th>
+    </tr>
+    <% for data in @datas : %>
+    <tr>
+        <td><%= data.beg_date %></td>
+        <td><%= data.end_date %></td>
+    </tr>
+    <% end %>
+</table>
+<p><a href="/request2_2">Назад</a></p>

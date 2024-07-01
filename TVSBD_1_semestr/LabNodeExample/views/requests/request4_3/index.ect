@@ -1,0 +1,14 @@
+<%extend '././page.ect' %>
+<table>
+    <tr>
+        <th>Номер автомобиля</th>
+        <th>Перевезенный вес за все время</th>
+    </tr>
+    <% for data in @datas : %>
+    <tr>
+        <td><%= data.state_num %></td>
+        <td><%= data.overall_weight %></td>
+    </tr>
+    <% end %>
+</table>
+<p><a href="/requests">Назад</a></p>

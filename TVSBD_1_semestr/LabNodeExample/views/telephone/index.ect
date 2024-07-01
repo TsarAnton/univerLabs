@@ -1,0 +1,32 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Номер</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th></th>
+    </tr>
+    <% for telephone in @telephones : %>
+    <tr>
+        <td><%= telephone.number %></td>
+        <td><%= telephone.name %></td>
+        <td><%= telephone.surname %></td>
+        <td><%= telephone.patronymic %></td>
+        <td>
+            <form class="inline" action="/edit_telephone" method="get">
+                <input type="hidden" name="id" value="<%- telephone.id %>">
+                <button>edit</button>
+            </form>
+            <form class="inline" action="/delete_telephone" method="post">
+                <input type="hidden" name="id" value="<%- telephone.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/edit_telephone" method="get"><button>add</button></form>
+</div>
+<p><a href="/">Назад</a></p>

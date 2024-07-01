@@ -1,0 +1,33 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Название роли</th>
+        <th>Пользователи</th>
+        <th></th>
+    </tr>
+    <% for role in @roles : %>
+    <tr>
+        <td><%= role.role_name %></td>
+        <td>
+            <form class="inline" action="/role_users" method="get">
+                <input type="hidden" name="id" value="<%- role.id %>">
+                <button>Пользователи</button> 
+            </form>
+        </td>
+        <td>
+            <form class="inline" action="/edit_role" method="get">
+                <input type="hidden" name="id" value="<%- role.id %>">
+                <button>edit</button>
+            </form>
+            <form class="inline" action="/delete_role" method="post">
+                <input type="hidden" name="id" value="<%- role.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/edit_role" method="get"><button>add</button></form>
+</div>
+<p><a href="/">Назад</a></p>

@@ -1,0 +1,34 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Дата начала</th>
+        <th>Дата завершения</th>
+        <th></th>
+    </tr>
+    <% for vacation in @vacations : %>
+    <tr>
+        <td><%= vacation.name %></td>
+        <td><%= vacation.surname %></td>
+        <td><%= vacation.patronymic %></td>
+        <td><%= vacation.beg_date %></td>
+        <td><%= vacation.end_date %></td>
+        <td>
+            <form class="inline" action="/edit_vacation" method="get">
+                <input type="hidden" name="id" value="<%- vacation.id %>">
+                <button>edit</button>
+            </form>
+            <form class="inline" action="/delete_vacation" method="post">
+                <input type="hidden" name="id" value="<%- vacation.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/edit_vacation" method="get"><button>add</button></form>
+</div>
+<p><a href="/">Назад</a></p>

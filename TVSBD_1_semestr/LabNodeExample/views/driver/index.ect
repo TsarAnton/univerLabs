@@ -1,0 +1,36 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Категория</th>
+        <th>Номер водительских прав</th>
+        <th>Дата выдачи</th>
+        <th></th>
+    </tr>
+    <% for driver in @drivers : %>
+    <tr>
+        <td><%= driver.name %></td>
+        <td><%= driver.surname %></td>
+        <td><%= driver.patronymic %></td>
+        <td><%= driver.category %></td>
+        <td><%= driver.license_num %></td>
+        <td><%= driver.license_date %></td>
+        <td>
+            <form class="inline" action="/edit_driver" method="get">
+                <input type="hidden" name="id" value="<%- driver.id %>">
+                <button>edit</button>
+            </form>
+            <form class="inline" action="/delete_driver" method="post">
+                <input type="hidden" name="id" value="<%- driver.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/edit_driver" method="get"><button>add</button></form>
+</div>
+<p><a href="/">Назад</a></p>

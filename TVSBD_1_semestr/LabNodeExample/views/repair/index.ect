@@ -1,0 +1,39 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Номер автомобиля</th>
+        <th>Дата начала</th>
+        <th>Планируемая дата завершения</th>
+        <th>Дата завершения</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <% for repair in @repairs : %>
+    <tr>
+        <td><%= repair.state_num %></td>
+        <td><%= repair.beg_date %></td>
+        <td><%= repair.plan_end_date %></td>
+        <td><%= repair.end_date %></td>
+        <td>
+            <form class="inline" action="/repair_breaks" method="get">
+                <input type="hidden" name="id" value="<%- repair.id %>">
+                <button>Поломки</button> 
+            </form>
+        </td>
+        <td>
+            <form class="inline" action="/edit_repair" method="get">
+                <input type="hidden" name="id" value="<%- repair.id %>">
+                <button>edit</button>
+            </form>
+            <form class="inline" action="/delete_repair" method="post">
+                <input type="hidden" name="id" value="<%- repair.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/edit_repair" method="get"><button>add</button></form>
+</div>
+<p><a href="/">Назад</a></p>

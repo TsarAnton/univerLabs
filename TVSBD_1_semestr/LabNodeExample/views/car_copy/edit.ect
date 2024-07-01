@@ -1,0 +1,19 @@
+<% extend './page.ect' %>
+<form action="/save_car_copy" method="post">
+    <% if @car_copy.id? : %>
+        <input type="hidden" name="id" value="<%- @car_copy.id %>">
+    <% end %>
+    <div><label for="state_num">Госномер:</label></div>
+    <div><input id="state_num" name="state_num" value="<%= @car_copy.state_num %>"></div>
+    <div><label for="car">Сведения об автомобиле:</label></div>
+    <div><select id="car" name="car">
+            <% for car in @cars : %>
+                <option value=<%= car.id %>>
+                    <div><%= car.mark %> </div>
+                    <div><%= car.model %></div>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    <button>Сохранить</button>
+</form>

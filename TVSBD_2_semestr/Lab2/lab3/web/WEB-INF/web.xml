@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <display-name>Тестовый пример</display-name>
+    <welcome-file-list>
+        <welcom-file>index.html</welcom-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>IndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/index.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListRoleServlet</servlet-name>
+        <servlet-class>ListRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListRoleServlet</servlet-name>
+        <url-pattern>/indexRole.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditRoleServlet</servlet-name>
+        <servlet-class>EditRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditRoleServlet</servlet-name>
+        <url-pattern>/editRole.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SaveRoleServlet</servlet-name>
+        <servlet-class>SaveRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveRoleServlet</servlet-name>
+        <url-pattern>/saveRole.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteRoleServlet</servlet-name>
+        <servlet-class>DeleteRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteRoleServlet</servlet-name>
+        <url-pattern>/deleteRole.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListUserServlet</servlet-name>
+        <servlet-class>ListUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListUserServlet</servlet-name>
+        <url-pattern>/indexUser.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>EditUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>/editUser.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SaveUserServlet</servlet-name>
+        <servlet-class>SaveUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveUserServlet</servlet-name>
+        <url-pattern>/saveUser.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <servlet-class>DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <url-pattern>/deleteUser.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListUserRoleServlet</servlet-name>
+        <servlet-class>ListUserRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListUserRoleServlet</servlet-name>
+        <url-pattern>/indexUserRole.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditUserRoleServlet</servlet-name>
+        <servlet-class>EditUserRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditUserRoleServlet</servlet-name>
+        <url-pattern>/editUserRole.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SaveUserRoleServlet</servlet-name>
+        <servlet-class>SaveUserRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveUserRoleServlet</servlet-name>
+        <url-pattern>/saveUserRole.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteUserRoleServlet</servlet-name>
+        <servlet-class>DeleteUserRoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUserRoleServlet</servlet-name>
+        <url-pattern>/deleteUserRole.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListDoctorServlet</servlet-name>
+        <servlet-class>ListDoctorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListDoctorServlet</servlet-name>
+        <url-pattern>/indexDoctor.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditDoctorServlet</servlet-name>
+        <servlet-class>EditDoctorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditDoctorServlet</servlet-name>
+        <url-pattern>/editDoctor.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SaveDoctorServlet</servlet-name>
+        <servlet-class>SaveDoctorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveDoctorServlet</servlet-name>
+        <url-pattern>/saveDoctor.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteDoctorServlet</servlet-name>
+        <servlet-class>DeleteDoctorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteDoctorServlet</servlet-name>
+        <url-pattern>/deleteDoctor.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListTicketServlet</servlet-name>
+        <servlet-class>ListTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListTicketServlet</servlet-name>
+        <url-pattern>/indexTicket.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditTicketServlet</servlet-name>
+        <servlet-class>EditTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditTicketServlet</servlet-name>
+        <url-pattern>/editTicket.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SaveTicketServlet</servlet-name>
+        <servlet-class>SaveTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveTicketServlet</servlet-name>
+        <url-pattern>/saveTicket.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteTicketServlet</servlet-name>
+        <servlet-class>DeleteTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteTicketServlet</servlet-name>
+        <url-pattern>/deleteTicket.html</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login.html</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout.html</url-pattern>
+    </servlet-mapping>
+
+
+
+    <filter>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <filter-class>SecurityAdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <url-pattern>/indexUser.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <url-pattern>/editUser.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <url-pattern>/saveUser.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <url-pattern>/deleteUser.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <url-pattern>/indexUserRole.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <url-pattern>/editUserRole.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <url-pattern>/saveUserRole.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityAdminFilter</filter-name>
+        <url-pattern>/deleteUserRole.html</url-pattern>
+    </filter-mapping>
+
+
+
+    <filter>
+        <filter-name>SecurityNurseFilter</filter-name>
+        <filter-class>SecurityNurseFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityNurseFilter</filter-name>
+        <url-pattern>/saveDoctor.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityNurseFilter</filter-name>
+        <url-pattern>/editDoctor.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityNurseFilter</filter-name>
+        <url-pattern>/deleteDoctor.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityNurseFilter</filter-name>
+        <url-pattern>/saveTicket.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityNurseFilter</filter-name>
+        <url-pattern>/editTicket.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityNurseFilter</filter-name>
+        <url-pattern>/deleteTicket.html</url-pattern>
+    </filter-mapping>
+</web-app>

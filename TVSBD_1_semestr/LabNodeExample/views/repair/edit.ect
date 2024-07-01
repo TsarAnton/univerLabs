@@ -1,0 +1,24 @@
+<% extend './page.ect' %>
+<form action="/save_repair" method="post">
+    <% if @repair.id? : %>
+        <input type="hidden" name="id" value="<%- @repair.id %>">
+    <% end %>
+    <div><label for="beg_date">Дата начала:</label></div>
+    <div><input id="beg_date" name="beg_date" type="date" value="<%= @repair.beg_date %>"></div>
+    <div><label for="plan_end_date">Планируемая дата завершения:</label></div>
+    <div><input id="plan_end_date" name="plan_end_date" type="date" value="<%= @repair.plan_end_date %>"></div>
+    <div><label for="end_date">Дата завершения:</label></div>
+    <div><input id="end_date" name="end_date" type="date" value="<%= @repair.end_date %>"></div>  
+    <div><label for="car">Автомобиля:</label></div>
+    <div><select id="car_copy" name="car_copy">
+            <% for car_copy in @car_copys : %>
+                <option value=<%= car_copy.id %>>
+                    <div><%= car_copy.state_num %> </div>
+                    <div><%= car_copy.model %> </div>
+                    <div><%= car_copy.mark %></div>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    <button>Сохранить</button>
+</form>

@@ -1,0 +1,30 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Госномер</th>
+        <th>Марка</th>
+        <th>Модель</th>
+        <th></th>
+    </tr>
+    <% for car_copy in @car_copys : %>
+    <tr>
+        <td><%= car_copy.state_num %></td>
+        <td><%= car_copy.mark %></td>
+        <td><%= car_copy.model %></td>
+        <td>
+            <form class="inline" action="/edit_car_copy" method="get">
+                <input type="hidden" name="id" value="<%- car_copy.id %>">
+                <button>edit</button>
+            </form>
+            <form class="inline" action="/delete_car_copy" method="post">
+                <input type="hidden" name="id" value="<%- car_copy.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/edit_car_copy" method="get"><button>add</button></form>
+</div>
+<p><a href="/">Назад</a></p>

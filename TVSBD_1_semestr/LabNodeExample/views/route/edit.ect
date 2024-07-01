@@ -1,0 +1,13 @@
+<% extend './page.ect' %>
+<form action="/save_route" method="post">
+    <% if @route.id? : %>
+        <input type="hidden" name="id" value="<%- @route.id %>">
+    <% end %>
+    <div><label for="beg_point">Пункт отправления:</label></div>
+    <div><input id="beg_point" name="beg_point" value="<%= @route.beg_point %>"></div>
+    <div><label for="end_point">Пункт прибытия:</label></div>
+    <div><input id="end_point" name="end_point" value="<%= @route.end_point %>"></div>
+    <div><label for="time">Время:</label></div>
+    <div><input id="time" name="time" type="time" value="<%= @route.time %>"></div>
+    <button>Сохранить</button>
+</form>

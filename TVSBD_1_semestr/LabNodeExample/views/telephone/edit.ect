@@ -1,0 +1,20 @@
+<% extend './page.ect' %>
+<form action="/save_telephone" method="post">
+    <% if @telephone.id? : %>
+        <input type="hidden" name="id" value="<%- @telephone.id %>">
+    <% end %>
+    <div><label for="number">Номер телефона:</label></div>
+    <div><input id="number" name="number" type="tel" value="<%= @telephone.number %>"></div>
+    <div><label for="driver">Водитель:</label></div>
+    <div><select id="driver" name="driver">
+            <% for driver in @drivers : %>
+                <option value=<%= driver.id %>>
+                    <div><%= driver.name %> </div>
+                    <div><%= driver.surname %> </div>
+                    <div><%= driver.patronymic %></div>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    <button>Сохранить</button>
+</form>

@@ -1,0 +1,28 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Логин</th>
+        <th>пароль</th>
+        <th></th>
+    </tr>
+    <% for user in @users : %>
+    <tr>
+        <td><%= user.login %></td>
+        <td><%= user.password %></td>
+        <td>
+            <form class="inline" action="/delete_role_users" method="post">
+                <input type="hidden" name="userId" value="<%- user.id %>">
+                <input type="hidden" name="roleId" value="<%= @role.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/add_user_to_role" method="get">
+        <input type="hidden" name="roleId" value="<%= @role.id %>">
+        <button>add</button>
+    </form>
+</div>
+<p><a href="/role">Назад</a></p>

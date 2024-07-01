@@ -1,0 +1,168 @@
+--задание 1
+CREATE PROCEDURE PROC1
+(@SALE_NO smallint,
+@NOTARY_OFFICE varchar(20),
+@DATE_CONTRACT smalldatetime,
+@SERVICE_COST money,
+@PROPERTY_NO smallint,
+@BUYER_NO smallint,
+@OWNER_NO smallint)
+AS
+IF NOT EXISTS (SELECT Sale_no FROM CONTRACT WHERE Sale_no = @SALE_NO)
+BEGIN
+IF EXISTS (SELECT Property_no FROM PROPERTY WHERE Property_no = @PROPERTY_NO)
+BEGIN
+IF EXISTS (SELECT Buyer_no FROM BUYER WHERE Buyer_no = @BUYER_NO)
+BEGIN
+IF EXISTS (SELECT Owner_no FROM OWNER WHERE Owner_no = @OWNER_NO)
+BEGIN
+INSERT INTO CONTRACT(Sale_no, Notary_Office, Date_Contract, Service_Cost, Property_no, Buyer_no, Owner_no) VALUES
+(@SALE_NO, @NOTARY_OFFICE, @DATE_CONTRACT, @SERVICE_COST, @PROPERTY_NO, @BUYER_NO, @OWNER_NO)
+END
+END
+END
+END
+
+EXEC PROC1 11, '111111', '20.02.2002', 1, 1, 1, 1
+
+--задание 2
+CREATE PROCEDURE PROC2
+(@STAFF_NO smallint)
+AS
+IF EXISTS (SELECT Staff_no FROM STAFF WHERE Staff_no = @STAFF_NO)
+BEGIN
+DECLARE @SELL_COUNT smallint;
+SELECT @SELL_COUNT = COUNT(*) FROM CONTRACT WHERE Property_no IN (SELECT Property_no FROM PROPERTY WHERE Staff_no = @STAFF_NO) AND YEAR(GETDATE()) = YEAR(Date_Contract);
+DECLARE @PERCENT decimal;
+SET @PERCENT = 0;
+IF @SELL_COUNT = 1 
+BEGIN
+SET @PERCENT = 20;
+END
+ELSE IF @SELL_COUNT = 2 
+BEGIN
+SET @PERCENT = 30;
+END
+ELSE IF @SELL_COUNT > 2 
+BEGIN
+SET @PERCENT = 40;
+END
+DECLARE @OLD_SALARY money;
+SELECT @OLD_SALARY = Salary FROM STAFF WHERE Staff_no = @STAFF_NO;
+PRINT 'Старая зароботная плата = ' + CONVERT(CHAR, @OLD_SALARY);
+UPDATE STAFF SET Salary = Salary * (100 + @PERCENT) / 100 WHERE Staff_no = @STAFF_NO;
+DECLARE @NEW_SALARY money;
+SELECT @NEW_SALARY = Salary FROM STAFF WHERE Staff_no = @STAFF_NO;
+PRINT 'Новая зароботная плата = '+ CONVERT(CHAR, @NEW_SALARY);
+END
+
+EXEC PROC2 1
+
+--задание 3
+
+CREATE VIEW VIEW6 AS
+SELECT Branch_no, AVG(Prop_count) AS Avg_count FROM VIEW2 GROUP BY Branch_no
+
+CREATE PROCEDURE PROC1
+(@Код_группы smallint,
+@Средний_бал Real)
+SELECT Код_группы, COUNT(*) AS Количество_студентов FROM Студенты 
+WHERE @Средний_бал >= (SELECT AVG(Оценка) FROM Оценки WHERE Оценки.Код_студента = Студенты.Код_студента AND Код_группы = @Код_группы)
+GROUP BY Код_группы;
+
+EXEC PROC1 44, 6
+
+CREATE PROC PROC3
+(@RESULT smallint OUTPUT)
+AS
+SELECT @RESULT = COUNT(*) FROM VIEW6 WHERE Avg_count < 2;
+
+SELECT * FROM VIEW6
+DECLARE @RESULT smallint;
+EXEC PROC3 @RESULT OUTPUT;
+PRINT CONVERT(CHAR, @RESULT);
+
+--задание 4
+CREATE PROCEDURE PROC4
+(@ROOMS smallint,
+@FLOOR smallint,
+@THE_AREA smallint,
+@KITCHEN_AREA smallint)
+AS
+SELECT * FROM PROPERTY WHERE Rooms = @ROOMS AND Floor = @FLOOR AND The_area >= @THE_AREA AND Kitchen_area >= @KITCHEN_AREA;
+
+EXEC PROC4 2, 2, 38, 20
+
+--задание 5
+CREATE PROCEDURE PROC5
+(@STAFF_NO smallint,
+@PERCENT decimal)
+AS
+DECLARE @BRANCH_NO smallint;
+SELECT @BRANCH_NO = Branch_no FROM STAFF WHERE Staff_no = @STAFF_NO;
+DECLARE @MIN_STAFF_NO smallint;
+SELECT @MIN_STAFF_NO = Staff_no FROM STAFF WHERE Salary = (SELECT MIN(Salary) FROM STAFF WHERE Branch_no = @BRANCH_NO);
+IF @STAFF_NO = @MIN_STAFF_NO
+BEGIN
+UPDATE STAFF SET Salary = Salary * (100 + @PERCENT) / 100 WHERE Staff_no = @STAFF_NO;
+PRINT 'Операция успешно выполнена';
+END
+
+EXEC PROC5 1, 10
+
+--задание 6
+CREATE PROCEDURE PROC6
+(@BRANCH_NO smallint,
+@START_TIME smalldatetime,
+@END_TIME smalldatetime)
+AS
+IF @START_TIME < @END_TIME
+BEGIN
+SELECT * FROM STAFF WHERE Staff_no NOT IN 
+(SELECT Staff_no FROM PROPERTY WHERE Property_no IN 
+(SELECT Property_no FROM CONTRACT WHERE Date_Contract < @END_TIME AND Date_Contract > @START_TIME))
+AND Branch_no = @BRANCH_NO;
+END
+
+EXEC PROC6 1, '08.04.2023','12.04.2023'
+
+--задание 7
+CREATE PROC PROC7
+(@PERCENT decimal)
+AS
+--UPDATE PROPERTY SET Selling_Price = Selling_Price * (1 - @PERCENT / 100) WHERE 
+--Property_no IN (SELECT Property_no FROM VIEWING GROUP BY Property_no HAVING COUNT(*) > 2)
+--AND Property_no NOT IN (SELECT Property_no FROM CONTRACT);
+DECLARE @CURRENT_PROP_NO smallint;
+SET @CURRENT_PROP_NO = 0;
+DECLARE @MAX_PROP_NO smallint;
+SELECT @MAX_PROP_NO = MAX(Property_no) FROM PROPERTY;
+DECLARE @NEW_PRICE money;
+WHILE @CURRENT_PROP_NO <= @MAX_PROP_NO
+BEGIN
+IF @CURRENT_PROP_NO NOT IN (SELECT Property_no FROM CONTRACT) AND @CURRENT_PROP_NO IN (SELECT Property_no FROm VIEWING GROUP BY Property_no HAVING COUNT(*) > 2)
+BEGIN
+UPDATE PROPERTY SET Selling_Price = Selling_Price * (1 - @PERCENT / 100) WHERE Property_no = @CURRENT_PROP_NO;
+SELECT @NEW_PRICE = Selling_Price FROM PROPERTY WHERE Property_no = @CURRENT_PROP_NO;
+PRINT 'Обновили недвижимость номер = ' + CONVERT(CHAR, @CURRENT_PROP_NO) + ' новая цена = ' + CONVERT(CHAR, @NEW_PRICE);
+END
+SET @CURRENT_PROP_NO = @CURRENT_PROP_NO + 1;
+END
+
+EXEC PROC7 5
+
+--задание 8
+CREATE PROCEDURE PROC8 
+(@OWNER_NO smallint)
+AS
+IF NOT EXISTS (SELECT Owner_no FROM PROPERTY WHERE Owner_no = @OWNER_NO)
+BEGIN
+DELETE FROM OWNER WHERE Owner_no = @OWNER_NO;
+PRINT 'Успешно удален';
+END
+ELSE
+BEGIN
+PRINT 'Не удалось удалить: связанные записи в таблице PROPERTY';
+END
+
+EXEC PROC8 1

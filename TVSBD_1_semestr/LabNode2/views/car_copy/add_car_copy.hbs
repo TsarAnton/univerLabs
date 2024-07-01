@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление единицы машины</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+</head>
+<body>
+    <h1>Добавить единицу машины</h1>
+     <form method="POST">
+        <label>Госномер</label><br>
+        <input name="mark" class="field"/><br><br>
+        <select name="car" required="required">
+            {{#each car}}
+                <option>{{this.mark}} {{this.model}}</option>
+            {{/each}}
+        </select>
+        <input type="submit" value="Добавить" />
+     </form>
+     <a href="/car_copy">К списку машин</a>
+</body>
+<html>

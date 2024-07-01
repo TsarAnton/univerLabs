@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <display-name>Тестовый пример</display-name>
+    <welcome-file-list>
+        <welcom-file>index.html</welcom-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>ListServlet</servlet-name>
+        <servlet-class>ListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListServlet</servlet-name>
+        <url-pattern>/index.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditServlet</servlet-name>
+        <servlet-class>EditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditServlet</servlet-name>
+        <url-pattern>/edit.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SaveServlet</servlet-name>
+        <servlet-class>SaveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveServlet</servlet-name>
+        <url-pattern>/save.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/delete.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TaskServlet</servlet-name>
+        <servlet-class>TaskServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TaskServlet</servlet-name>
+        <url-pattern>/task.html</url-pattern>
+    </servlet-mapping>
+    
+    <error-page>
+        <exception-type>jakarta.servlet.ServletException</exception-type>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
+
+
+</web-app>

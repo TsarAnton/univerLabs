@@ -1,0 +1,19 @@
+<% extend './page.ect' %>
+<form action="/save_driver" method="post">
+    <% if @driver.id? : %>
+        <input type="hidden" name="id" value="<%- @driver.id %>">
+    <% end %>
+    <div><label for="name">Имя:</label></div>
+    <div><input id="name" name="name" value="<%= @driver.name %>"></div>
+    <div><label for="surname">Фамилия:</label></div>
+    <div><input id="surname" name="surname" value="<%= @driver.surname %>"></div>
+    <div><label for="patronymic">Отчество:</label></div>
+    <div><input id="patronymic" name="patronymic" value="<%= @driver.patronymic %>"></div>
+    <div><label for="category">Категория:</label></div>
+    <div><input id="category" name="category" value="<%= @driver.category %>"></div>
+    <div><label for="license_num">Номер водительских прав:</label></div>
+    <div><input id="license_num" name="license_num" value="<%= @driver.license_num %>"></div>
+    <div><label for="license_date">Дата выдачи:</label></div>
+    <div><input id="license_date" name="license_date" type="date" value="<%= @driver.license_date %>"></div>
+    <button>Сохранить</button>
+</form>

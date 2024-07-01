@@ -1,0 +1,20 @@
+<%extend '././page.ect' %>
+<table>
+    <tr>
+        <th>Пункт отправления</th>
+        <th>Пункт прибытия</th>
+        <th>Дата начала</th>
+        <th>Дата завершения</th>
+        <th>Вес</th>
+    </tr>
+    <% for data in @datas : %>
+    <tr>
+        <td><%= data.beg_point %></td>
+        <td><%= data.end_point %></td>
+        <td><%= data.beg_date %></td>
+        <td><%= data.end_date %></td>
+        <td><%= data.weight %></td>
+    </tr>
+    <% end %>
+</table>
+<p><a href="/requests">Назад</a></p>

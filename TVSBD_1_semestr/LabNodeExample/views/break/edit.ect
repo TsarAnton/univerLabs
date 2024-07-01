@@ -1,0 +1,11 @@
+<% extend './page.ect' %>
+<form action="/save_break" method="post">
+    <% if @break.id? : %>
+        <input type="hidden" name="id" value="<%- @break.id %>">
+    <% end %>
+    <div><label for="break_notes">Описание поломки:</label></div>
+    <div><input id="break_notes" name="break_notes" value="<%= @break.break_notes %>"></div>
+    <div><label for="repair_notes">Описание ремонта:</label></div>
+    <div><input id="repair_notes" name="repair_notes" value="<%= @break.repair_notes %>"></div>
+    <button>Сохранить</button>
+</form>

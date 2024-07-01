@@ -1,0 +1,30 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Марка</th>
+        <th>Модель</th>
+        <th>Тоннаж</th>
+        <th></th>
+    </tr>
+    <% for car in @cars : %>
+    <tr>
+        <td><%= car.mark %></td>
+        <td><%= car.model %></td>
+        <td><%= car.tonnage %></td>
+        <td>
+            <form class="inline" action="/edit_car" method="get">
+                <input type="hidden" name="id" value="<%- car.id %>">
+                <button>edit</button>
+            </form>
+            <form class="inline" action="/delete_car" method="post">
+                <input type="hidden" name="id" value="<%- car.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/edit_car" method="get"><button>add</button></form>
+</div>
+<p><a href="/">Назад</a></p>

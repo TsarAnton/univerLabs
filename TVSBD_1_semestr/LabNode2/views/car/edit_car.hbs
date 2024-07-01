@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+</head>
+<body>
+    <h1>Редактирование машины</h1>
+     <form action="/edit_car/{{car.id}}" method="POST">
+        <input type="hidden" name="id" value="{{car.id}}" />
+        <label>Марка</label><br>
+        <input name="mark" value="{{car.mark}}"  class="field" /><br><br>
+        <label>Модель</label><br>
+        <input name="model" value="{{car.model}}"  class="field" /><br><br>
+        <label>Тоннаж</label><br>
+        <input name="tonnage" value="{{car.tonnage}}"  class="field" /><br><br>
+        <input type="submit" value="Изменить" />
+     </form>
+     <a href="/car">К списку машин</a>
+</body>
+<html>

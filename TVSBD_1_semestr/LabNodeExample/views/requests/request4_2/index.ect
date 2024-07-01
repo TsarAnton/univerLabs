@@ -1,0 +1,14 @@
+<%extend '././page.ect' %>
+<table>
+    <tr>
+        <th>ID водителя</th>
+        <th>Первый отпуск</th>
+    </tr>
+    <% for data in @datas : %>
+    <tr>
+        <td><%= data.driver_id %></td>
+        <td><%= data.first_vacation %></td>
+    </tr>
+    <% end %>
+</table>
+<p><a href="/requests">Назад</a></p>

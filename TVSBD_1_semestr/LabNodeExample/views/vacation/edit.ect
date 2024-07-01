@@ -1,0 +1,22 @@
+<% extend './page.ect' %>
+<form action="/save_vacation" method="post">
+    <% if @vacation.id? : %>
+        <input type="hidden" name="id" value="<%- @vacation.id %>">
+    <% end %>
+    <div><label for="beg_date">Дата начала:</label></div>
+    <div><input id="beg_date" name="beg_date" type="date" value="<%= @vacation.beg_date %>"></div>
+    <div><label for="end_date">Дата завершения:</label></div>
+    <div><input id="end_date" name="end_date" type="date" value="<%= @vacation.end_date %>"></div>
+    <div><label for="driver">Водитель:</label></div>
+    <div><select id="driver" name="driver">
+            <% for driver in @drivers : %>
+                <option value=<%= driver.id %>>
+                    <div><%= driver.name %> </div>
+                    <div><%= driver.surname %> </div>
+                    <div><%= driver.patronymic %></div>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    <button>Сохранить</button>
+</form>

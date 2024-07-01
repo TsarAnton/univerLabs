@@ -1,0 +1,35 @@
+.message, .footer, .content {
+    padding: 10px;
+}
+
+.message, .footer {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.message {
+    border-color: orangered;
+    background: orange;
+}
+
+.footer {
+    border-color: green;
+    background: lightgreen;
+}
+
+.hide {
+    visibility: hidden;
+} 
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 2px 5px;
+}
+
+.inline {
+    display: inline;
+}

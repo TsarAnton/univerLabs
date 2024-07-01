@@ -1,0 +1,13 @@
+<% extend './page.ect' %>
+<form action="/save_break_to_repair" method="post">
+    <input type="hidden" name="repairId" value="<%- @repair.id %>">
+    <div><select id="break" name="break">
+            <% for break1 in @breaks : %>
+                <option value=<%= break1.break_id %>>
+                    <div><%= break1.break_notes %></div>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    <button>Сохранить</button>
+</form>

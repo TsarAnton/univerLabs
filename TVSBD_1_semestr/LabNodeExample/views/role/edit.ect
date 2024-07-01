@@ -1,0 +1,9 @@
+<% extend './page.ect' %>
+<form action="/save_role" method="post">
+    <% if @role.id? : %>
+        <input type="hidden" name="id" value="<%- @role.id %>">
+    <% end %>
+    <div><label for="role_name">Название:</label></div>
+    <div><input id="role_name" name="role_name" value="<%= @role.role_name %>"></div>
+    <button>Сохранить</button>
+</form>

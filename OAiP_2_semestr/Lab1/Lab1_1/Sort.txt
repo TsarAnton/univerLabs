@@ -1,0 +1,28 @@
+Владелец: Petr Petrov Petrovich
+Автомобиль: 
+Номер: 9876
+Марка: BMW
+Модель: St
+Год: 1994
+
+Владелец: Sidor Sidorov Sidorovich
+Автомобиль: 
+Номер: 5555
+Марка: Audi
+Модель: Hy
+Год: 2000
+
+Владелец: Ivan Ivanov Ivanovich
+Автомобиль: 
+Номер: 1234
+Марка: Audi
+Модель: Fm
+Год: 2003
+
+Владелец: Anton Antonov Antonovich
+Автомобиль: 
+Номер: 1234
+Марка: Tesla
+Модель: Fu
+Год: 2020
+

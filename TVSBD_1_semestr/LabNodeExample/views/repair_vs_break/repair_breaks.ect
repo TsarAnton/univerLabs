@@ -1,0 +1,28 @@
+<%extend './page.ect' %>
+<table>
+    <tr>
+        <th>Описание поломки</th>
+        <th>описание ремонта</th>
+        <th></th>
+    </tr>
+    <% for break1 in @breaks : %>
+    <tr>
+        <td><%= break1.break_notes %></td>
+        <td><%= break1.repair_notes %></td>
+        <td>
+            <form class="inline" action="/delete_repair_breaks" method="post">
+                <input type="hidden" name="breakId" value="<%- break1.id %>">
+                <input type="hidden" name="repairId" value="<%= @repair.id %>">
+                <button>del</button>
+            </form>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<div>
+    <form class="inline" action="/add_break_to_repair" method="get">
+        <input type="hidden" name="repairId" value="<%= @repair.id %>">
+        <button>add</button>
+    </form>
+</div>
+<p><a href="/repair">Назад</a></p>

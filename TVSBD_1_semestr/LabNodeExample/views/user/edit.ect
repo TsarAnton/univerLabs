@@ -1,0 +1,11 @@
+<% extend './page.ect' %>
+<form action="/save_user" method="post">
+    <% if @user.id? : %>
+        <input type="hidden" name="id" value="<%- @user.id %>">
+    <% end %>
+    <div><label for="login">Логин:</label></div>
+    <div><input id="login" name="login" value="<%= @user.login %>"></div>
+    <div><label for="password">Пароль:</label></div>
+    <div><input id="password" name="password" value="<%= @user.password %>"></div>
+    <button>Сохранить</button>
+</form>

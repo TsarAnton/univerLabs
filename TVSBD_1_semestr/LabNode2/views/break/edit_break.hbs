@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+</head>
+<body>
+    <h1>Редактирование поломки</h1>
+     <form action="/edit_break/{{break.id}}" method="POST">
+        <input type="hidden" name="id" value="{{break.id}}" />
+        <label>Информация о поломке</label><br>
+        <input name="break_notes" value="{{break.break_notes}}"  class="field" /><br><br>
+        <label>Информация о починке</label><br>
+        <input name="repair_notes" value="{{break.repair_notes}}"  class="field" /><br><br>
+        <input type="submit" value="Изменить" />
+     </form>
+     <a href="/break">К списку поломок</a>
+</body>
+<html>

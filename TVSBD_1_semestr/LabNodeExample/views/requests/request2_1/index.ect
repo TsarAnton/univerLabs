@@ -1,0 +1,12 @@
+<%extend '././page.ect' %>
+<table>
+    <tr>
+        <th>Номер телефона</th>
+    </tr>
+    <% for telephone in @telephones : %>
+    <tr>
+        <td><%= telephone.number %></td>
+    </tr>
+    <% end %>
+</table>
+<p><a href="/request2_1">Назад</a></p>

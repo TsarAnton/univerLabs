@@ -1,0 +1,13 @@
+<% extend './page.ect' %>
+<form action="/save_car" method="post">
+    <% if @car.id? : %>
+        <input type="hidden" name="id" value="<%- @car.id %>">
+    <% end %>
+    <div><label for="mark">Марка:</label></div>
+    <div><input id="mark" name="mark" value="<%= @car.mark %>"></div>
+    <div><label for="model">Модель:</label></div>
+    <div><input id="model" name="model" value="<%= @car.model %>"></div>
+    <div><label for="tonnage">Тоннаж:</label></div>
+    <div><input id="tonnage" name="tonnage" value="<%= @car.tonnage %>"></div>
+    <button>Сохранить</button>
+</form>

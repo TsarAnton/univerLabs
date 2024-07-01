@@ -1,0 +1,16 @@
+<% extend '././page.ect' %>
+<form action="/get_request2_2" method="post">
+    <div><label for="driver">Водитель:</label></div>
+    <div><select id="driver" name="driver">
+            <% for driver in @drivers : %>
+                <option value=<%= driver.id %>>
+                    <div><%= driver.name %> </div>
+                    <div><%= driver.surname %> </div>
+                    <div><%= driver.patronymic %></div>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    <button>Выполнить запрос</button>
+</form>
+<p><a href="/requests">Назад</a></p>

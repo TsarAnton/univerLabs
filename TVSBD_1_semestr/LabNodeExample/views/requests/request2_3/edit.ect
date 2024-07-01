@@ -1,0 +1,16 @@
+<% extend '././page.ect' %>
+<form action="/get_request2_3" method="post">
+    <div><label for="car_copy">Автомобиль:</label></div>
+    <div><select id="car_copy" name="car_copy">
+            <% for car_copy in @car_copys : %>
+                <option value=<%= car_copy.id %>>
+                    <div><%= car_copy.state_num %> </div>
+                    <div><%= car_copy.model %> </div>
+                    <div><%= car_copy.mark %></div>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    <button>Выполнить запрос</button>
+</form>
+<p><a href="/requests">Назад</a></p>

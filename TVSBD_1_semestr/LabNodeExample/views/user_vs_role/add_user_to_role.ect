@@ -1,0 +1,13 @@
+<% extend './page.ect' %>
+<form action="/save_user_to_role" method="post">
+    <input type="hidden" name="roleId" value="<%- @role.id %>">
+    <div><select id="user" name="user">
+            <% for user in @users : %>
+                <option value=<%= user.id %>>
+                    <div><%= user.login %></div>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    <button>Сохранить</button>
+</form>
